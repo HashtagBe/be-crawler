@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sites>
+	<!-- this file is the sites configuration xml. For each site to crawl, a specified 
+	site node must be added firstly. Both the name and domainUrl properties are 
+	required -->
+	<site name="theguardian" domainUrl="http://www.theguardian.com/" />
+</sites>

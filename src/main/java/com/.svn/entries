@@ -1,0 +1,43 @@
+10
+
+dir
+417
+svn://115.28.26.82/projects/HashtagCrawler/src/main/java/com
+svn://115.28.26.82/projects
+
+
+
+2015-03-01T16:27:57.369598Z
+417
+guangfeng.jin
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+ad97f441-3a70-4240-8258-6865b094aea6
+
+
+
+
+
+
+0
+
+((conflict dev dir update deleted deleted (version svn://115.28.26.82/projects 3 398 HashtagCrawler/src/main/java/com/dev dir) (version svn://115.28.26.82/projects 3 417 HashtagCrawler/src/main/java/com/dev none)))
+
+devlib
+dir
+
+hashtag
+dir
+

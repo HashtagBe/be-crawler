@@ -1,0 +1,50 @@
+10
+
+dir
+417
+svn://115.28.26.82/projects/HashtagCrawler/src/main/java/com/hashtag
+svn://115.28.26.82/projects
+
+
+
+2015-03-01T16:27:02.372352Z
+415
+guangfeng.jin
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+ad97f441-3a70-4240-8258-6865b094aea6
+
+
+
+
+
+
+0
+
+controller
+dir
+
+dao
+dir
+
+domain
+dir
+
+service
+dir
+
+util
+dir
+

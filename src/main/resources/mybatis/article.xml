@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.hashtag.domain.Article">
+	<resultMap type="com.hashtag.domain.Article" id="articleList">
+		<result column="id" property="id" />
+		<result column="status" property="status" />
+		<result column="siteId" property="siteId" />
+		<result column="topicId" property="topicId" />
+		<result column="rawTopicId" property="rawTopicId" />
+		<result column="url" property="url" />
+		<result column="title" property="title" />
+		<result column="subTitle" property="subTitle" />
+		<result column="authors" property="authors" />
+		<result column="imageUrls" property="imageUrls" />
+		<result column="paragraphs" property="paragraphs" />
+		<result column="date" property="date" />
+		<result column="crawlDate" property="crawlDate" />
+	</resultMap>
+
+	<select id="getArticleIdByUrl" parameterType="String"
+		resultType="int">
+		select id from `articles` where url = #{url};
+	</select>
+
+	<select id="getArticleList" resultMap="articleList"
+		parameterType="Map">
+		select * from `articles` where crawlDate >= #{startTime}
+		and crawlDate &lt; #{endTime} and status = #{status};
+	</select>
+	
+	<select id="getArticleCount" resultType="int"
+		parameterType="Map">
+		select count(id) from `articles` where crawlDate >= #{startTime}
+		and crawlDate &lt; #{endTime} and status = #{status};
+	</select>
+
+	<insert id="insertArticle" parameterType="com.hashtag.domain.Article">
+		insert into
+		`articles`(url, title, subTitle, crawlDate, date, imageUrls, authors,
+		paragraphs,
+		topicId, rawTopicId, status, siteId)
+		values(#{url},
+		#{title}, #{subTitle}, #{crawlDate}, #{date}, #{imageUrls},
+		#{authors}, #{paragraphs},
+		#{topicId}, #{rawTopicId}, #{status},
+		#{siteId})
+	</insert>
+
+	<update id="updateArticleStatus" parameterType="Map">
+		update `articles` set status = #{status}
+		where
+		id=#{id}
+	</update>
+</mapper>
