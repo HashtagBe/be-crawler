@@ -205,7 +205,7 @@ public class ArticleService {
 		StringBuilder sb = new StringBuilder();
 		sb.append("\"").append(name).append("\"").append(":");
 		if (value == null) {
-			sb.append("null");
+			sb.append("\"\"");
 			return sb.toString();
 		}
 

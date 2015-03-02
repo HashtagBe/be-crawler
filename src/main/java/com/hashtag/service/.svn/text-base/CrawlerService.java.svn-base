@@ -37,6 +37,11 @@ public class CrawlerService {
 	 * the default re-crawling time interval, 12 hours
 	 */
 	private long recrawlIntervalTime = 12 * 3600000;
+	
+	/**
+	 * the default incremental check interval time
+	 */
+	private long checkIntervalTime = 60000;
 
 	public synchronized void startDaemonThread() {
 		if (this.configFileDir == null) {
@@ -47,8 +52,10 @@ public class CrawlerService {
 				String s = prpt.getProperty("xmlFileDirectory");
 				this.configFileDir = new File(s);
 
-				int hours = Integer.parseInt(prpt.getProperty("crawlInterval"));
+				int hours = Integer.parseInt(prpt.getProperty("reCrawlInterval"));
 				this.recrawlIntervalTime = hours * 3600000;
+				hours = Integer.parseInt(prpt.getProperty("increCrawlInterval"));
+				this.checkIntervalTime = hours * 3600000;
 			} catch (IOException e) {
 				ExceptionHandler.handleException(e, logger);
 			}
@@ -56,7 +63,7 @@ public class CrawlerService {
 
 		if (crawlerThread == null) {
 			this.crawlerThread = new CrawlerThread(this.recrawlIntervalTime,
-					this.configFileDir);
+					this.checkIntervalTime, this.configFileDir);
 			this.crawlerThread.setSiteDAO(this.siteDao);
 			this.crawlerThread.setArticleDAO(this.articleDao);
 			this.crawlerThread.setTopicDAO(this.topicDao);

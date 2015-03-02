@@ -34,9 +34,10 @@ public class CrawlerThread extends Thread {
 	private WebsiteDAO wsDao;
 	private ArticleSaver crp;
 
-	public CrawlerThread(long timeInterval, File configDir) {
+	public CrawlerThread(long fullTimeInterval, long incrementalTimeInterval, File configDir) {
 		this.setDaemon(true);
-		this.reCrawlIntervalTime = timeInterval;
+		this.reCrawlIntervalTime = fullTimeInterval;
+		this.checkInterval = incrementalTimeInterval;
 		this.configDir = configDir;
 		this.articleFiles = new HashSet<File>();
 	}
