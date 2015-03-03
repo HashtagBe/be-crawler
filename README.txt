@@ -37,4 +37,8 @@ To deploy this program, please follow the steps described below:
 
 7, Visit the project web hompage, for example: http://localhost:8080/HashtagCrawler/, 
    a welcome page should be displayed in your browser. Make sure you visit the home page
-   URL of this application, otherwise the daemon crawler thread can not be started.          
+   URL of this application, otherwise the daemon crawler thread can not be started.     
+
+8, To get article list result, visit: http://localhost:8080/HashtagCrawler/article/getArticleList.do?startTime=${start time value}&endTime=${end time value}
+   To get article list count, visit: http://localhost:8080/HashtagCrawler/article/getArticleCount.do?startTime=${start time value}&endTime=${end time value}
+   To export article list to Excel, visit: http://localhost:8080/HashtagCrawler/article/exportToExcel.do
