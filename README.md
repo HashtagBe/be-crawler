@@ -5,14 +5,13 @@ This program is developed to crawl news articles for HashTagBe project.
 The program is managed by apache Maven project management tool.
 It is a web application based on Spring MVC framework.
 
-# How to deploy
+# How to build and run
 
 To deploy this program, please follow the steps described below:
 
 1. Make sure the required environment is ready in your computer:
    - JDK 1.7+
    - Maven 3.0+
-   - Apache Tomcat 7.0+
    - Mysql 5.0+
 
 2. Get the source codes from Github repository to your local directory.
@@ -38,20 +37,18 @@ To deploy this program, please follow the steps described below:
    You should see a lot of compiling and packaging related information
    printed out.
 
-5. After `mvn` command finished, switch to the maven target directory,
-   you should find a packaged war file.
+5. Run `target/bin/webapp` or `target/bin/webapp.bat` to start the web
+   application. Use the `PORT` environment variable to define on which
+   port start the embedded Tomcat. By default it uses 8088.
+   Alternatively use `foreman start`, which will use port 5000.
 
-6. Copy the war file to your Tomcat `webapps` directory, then startup Tomcat.
+6. Visit the project web homepage at `http://localhost:8088/`.
+   to start the daemon crawler thread.
 
-7. Visit the project web homepage, for example:
-   `http://localhost:8080/HashtagCrawler/`, a welcome page should be displayed
-   in your browser. Make sure you visit the home page URL of this application,
-   otherwise the daemon crawler thread can not be started.
-
-8. In order to:
+7. In order to:
    - get article list result:
-   `http://localhost:8080/HashtagCrawler/article/getArticleList.do?startTime=${start time value}&endTime=${end time value}`
+   `http://localhost:8088/article/getArticleList.do?startTime=${start time value}&endTime=${end time value}`
    - get article list count:
-   `http://localhost:8080/HashtagCrawler/article/getArticleCount.do?startTime=${start time value}&endTime=${end time value}`
+   `http://localhost:8088/article/getArticleCount.do?startTime=${start time value}&endTime=${end time value}`
    - export article list to Excel:
-   `http://localhost:8080/HashtagCrawler/article/exportToExcel.do`
+   `http://localhost:8088/article/exportToExcel.do`
