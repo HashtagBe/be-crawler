@@ -1,8 +1,0 @@
-#the crawling configuration xml file directory
-xmlFileDirectory=D:/Workspace/HashtagCrawler/config
-
-#the full re-crawling interval time in hours 
-reCrawlInterval=6
-
-#the incremental-crawling interval time in hours
-increCrawlInterval=6
