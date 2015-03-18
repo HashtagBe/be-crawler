@@ -4,4 +4,5 @@
 	site node must be added firstly. Both the name and domainUrl properties are 
 	required -->
 	<site name="theguardian" domainUrl="http://www.theguardian.com/" />
+	<site name="dailymail" domainUrl="http://www.dailymail.co.uk/" />
 </sites>
