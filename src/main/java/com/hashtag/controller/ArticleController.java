@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.hashtag.domain.Article;
@@ -28,7 +29,10 @@ public class ArticleController {
 
 	@RequestMapping(value = "/getArticleList", method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
 	@ResponseBody
-	public Object getArticleList(long startTime, long endTime) {
+	public Object getArticleList(@RequestParam(required = false) Long startTime, @RequestParam(required = false) Long endTime) {
+		if (startTime == null) startTime = 0L;
+		if (endTime == null) endTime = System.currentTimeMillis();
+
 		JsonRespEntity jre = new JsonRespEntity();
 		List<Article> articleList = this.articleSvc.getArticleList(startTime,
 				endTime, Article.STATUS_ACCEPTED);
@@ -54,7 +58,10 @@ public class ArticleController {
 
 	@RequestMapping(value = "/getArticleCount", method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
 	@ResponseBody
-	public Object getArticleCount(long startTime, long endTime) {
+	public Object getArticleCount(@RequestParam(required = false) Long startTime, @RequestParam(required = false) Long endTime) {
+		if (startTime == null) startTime = 0L;
+		if (endTime == null) endTime = System.currentTimeMillis();
+
 		JsonRespEntity jre = new JsonRespEntity();
 		int count = this.articleSvc.getArticleCount(startTime, endTime,
 				Article.STATUS_ACCEPTED);

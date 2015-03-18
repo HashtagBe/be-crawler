@@ -2,5 +2,5 @@
   - [ ] use `src/main/webapp`
   - [ ] move configuration and tasks `pom.xml`
 - [ ] No need to visit the root path to start the crawler thread
-- [ ] Use sensible defaults for `/article` controller parameters
+- [X] Use sensible defaults for `/article` controller parameters
 - [ ] Log _also_ to console
