@@ -1,7 +1,7 @@
 create database if not exists hashtag_articles default charset utf8;
 
 /* websites */
-CREATE TABLE `websites` (
+CREATE TABLE `hashtag_articles`.`websites` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(64) DEFAULT NULL,
   `domainUrl` varchar(64) DEFAULT NULL,
@@ -10,7 +10,7 @@ CREATE TABLE `websites` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /* topics */
-CREATE TABLE `topics` (
+CREATE TABLE `hashtag_articles`.`topics` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(64) NOT NULL,
   `fromUrl` varchar(64) NOT NULL,
@@ -23,7 +23,7 @@ CREATE TABLE `topics` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /* articles */
-CREATE TABLE `articles` (
+CREATE TABLE `hashtag_articles`.`articles` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `url` varchar(250) NOT NULL,
   `title` varchar(1024) DEFAULT NULL,
