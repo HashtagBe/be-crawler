@@ -1,6 +1,8 @@
+- [ ] Use embedded database (SQLite or H2)
 - [ ] Mavenize the project
   - [ ] use `src/main/webapp`
   - [ ] move configuration and tasks `pom.xml`
+  - [ ] setup database
 - [ ] No need to visit the root path to start the crawler thread
 - [X] Use sensible defaults for `/article` controller parameters
 - [ ] Log _also_ to console
