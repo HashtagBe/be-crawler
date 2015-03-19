@@ -6,4 +6,5 @@
 	<site name="theguardian" domainUrl="http://www.theguardian.com/" />
 	<site name="dailymail" domainUrl="http://www.dailymail.co.uk/" />
 	<site name="techcrunch" domainUrl="http://techcrunch.com/" />
+	<site name="mashable" domainUrl="http://mashable.com/" />
 </sites>
