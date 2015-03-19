@@ -1,3 +1,4 @@
+- [ ] Fix json formatter
 - [ ] Use embedded database (SQLite or H2)
 - [ ] Mavenize the project
   - [ ] use `src/main/webapp`
