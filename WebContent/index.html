@@ -6,6 +6,12 @@
 <body>
 	<script>
 		var xmlhttp = new XMLHttpRequest();
+                xmlhttp.onload = function(e) {
+                    var p = document.createElement("p");
+                    var text = document.createTextNode("Crawling started");
+                    p.appendChild(text);
+                    document.body.appendChild(p);
+                };
 		xmlhttp.open("GET", "article/startArticleCrawler.do", true);
 		xmlhttp.send();
 	</script>
