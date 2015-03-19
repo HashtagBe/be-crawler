@@ -14,6 +14,7 @@ import com.hashtag.dao.ArticleDAO;
 import com.hashtag.dao.TopicDAO;
 import com.hashtag.domain.Article;
 import com.hashtag.domain.Topic;
+import org.apache.commons.lang3.StringEscapeUtils;
 
 @Service
 public class ArticleService {
@@ -75,13 +76,17 @@ public class ArticleService {
 		return rst;
 	}
 
+        private String escape(String input) {
+            return StringEscapeUtils.escapeJson(input);
+        }
+        
 	public String convert(Article a) {
 		StringBuilder sb = new StringBuilder();
 		sb.append("{");
 
 		sb.append(this.assembleNameValue("s", a.getUrl())).append(",");
-		sb.append(this.assembleNameValue("t", a.getTitle())).append(",");
-		sb.append(this.assembleNameValue("st", a.getSubTitle())).append(",");
+		sb.append(this.assembleNameValue("t", escape(a.getTitle()))).append(",");
+		sb.append(this.assembleNameValue("st", escape(a.getSubTitle()))).append(",");
 		// image url list
 		String s = a.getImageUrls();
 		if (s != null) {
@@ -105,7 +110,7 @@ public class ArticleService {
 			List<String> authorList = new LinkedList<String>();
 			for (String author : authors) {
 				if (author.trim().length() > 0)
-					authorList.add(author);
+					authorList.add(escape(author));
 			}
 			sb.append(this.assembleNameValue("a", authorList));
 		} else {
@@ -120,7 +125,7 @@ public class ArticleService {
 			List<String> paraList = new LinkedList<String>();
 			for (String para : paragraphs) {
 				if (para.trim().length() > 0)
-					paraList.add(para);
+					paraList.add(escape(para));
 			}
 			sb.append(this.assembleNameValue("p", paraList));
 		} else {
