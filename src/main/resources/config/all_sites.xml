@@ -8,4 +8,5 @@
 	<site name="techcrunch" domainUrl="http://techcrunch.com/" />
 	<site name="mashable" domainUrl="http://mashable.com/" />
 	<site name="forbes" domainUrl="http://www.forbes.com/" />
+	<site name="bloomberg" domainUrl="http://www.bloomberg.com/" />
 </sites>
