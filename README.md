@@ -9,7 +9,6 @@ It is a web application based on Spring MVC framework.
 
 - JDK 1.7+
 - Maven 3.0+
-- Mysql 5.0+
 
 ## How to build
 
@@ -22,11 +21,7 @@ It is a web application based on Spring MVC framework.
      (for example `theguardian_articles.xml`) are located in the
      specified directory.
 
-   - Setup database
-     - edit `mybatis/jdbc.properties` file to match
-       your database
-     - execute `mybatis/database.sql` script to
-       create the database and tables.
+   - Setup database running `mvn sql:execute`
 
    - Configure logger in `config/log4j.xml` file
      - currently there are `<param name="File" value="logs/debug.log" />`
