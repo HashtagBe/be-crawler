@@ -9,4 +9,5 @@
 	<site name="mashable" domainUrl="http://mashable.com/" />
 	<site name="forbes" domainUrl="http://www.forbes.com/" />
 	<site name="bloomberg" domainUrl="http://www.bloomberg.com/" />
+	<site name="wired" domainUrl="http://www.wired.com/" />
 </sites>
