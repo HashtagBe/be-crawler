@@ -43,13 +43,13 @@ public class ArticleController {
 		}
 
 		List<String> rst = this.articleSvc.convert(articleList);
-		StringBuilder sb = new StringBuilder("[");
+		StringBuilder sb = new StringBuilder("[\n");
 		for (String s : rst) {
-			sb.append(s).append(",");
+			sb.append(s).append(",\n");
 		}
 
 		if (sb.length() > 1)
-			sb.deleteCharAt(sb.length() - 1);
+			sb.deleteCharAt(sb.length() - 2);
 
 		sb.append("]");
 
