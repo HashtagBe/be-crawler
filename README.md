@@ -32,7 +32,7 @@ It is a web application based on Spring MVC framework.
 
 ## How to run
 
-1. Run `target/bin/webapp` or `target/bin/webapp.bat` to start the web
+1. Run `bin/webapp` or `bin/webapp.bat` to start the web
    application. Use the `PORT` environment variable to define on which
    port start the embedded Tomcat. By default it uses `8088`.
    Alternatively use `foreman start`, which will use port `5000`.

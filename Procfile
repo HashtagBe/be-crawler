@@ -1,1 +1,1 @@
-webcrawler: sh target/bin/webapp
+webcrawler: sh bin/webapp
