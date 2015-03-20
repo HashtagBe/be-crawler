@@ -1,21 +1,23 @@
 <html>
 <head>
-<title>hashtag article crawler</title>
+    <title>hashtag article crawler</title>
+    <script>
+        function startCrawler() {
+            var xhr = new XMLHttpRequest();
+            xhr.onload = function(e) {
+                var p = document.createElement("p");
+                var text = document.createTextNode("Crawling started");
+                p.appendChild(text);
+                document.body.appendChild(p);
+            };
+            xhr.open("GET", "article/startArticleCrawler.do", true);
+            xhr.send();
+        }
+    </script>
 </head>
-
 <body>
-	<script>
-		var xmlhttp = new XMLHttpRequest();
-                xmlhttp.onload = function(e) {
-                    var p = document.createElement("p");
-                    var text = document.createTextNode("Crawling started");
-                    p.appendChild(text);
-                    document.body.appendChild(p);
-                };
-		xmlhttp.open("GET", "article/startArticleCrawler.do", true);
-		xmlhttp.send();
-	</script>
-	<h3>Welcome to the hashtag article crawler system</h3>
-	
+    <h1>#be Article Crawler System</h1>
+    <p>Welcome to the #be article crawler system.</p>
+    <button onclick="startCrawler();">start crawling</button>
 </body>
 </html>
