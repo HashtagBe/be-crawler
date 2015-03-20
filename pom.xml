@@ -12,9 +12,12 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<java.version>1.7</java.version>
 		<spring.version>3.1.1.RELEASE</spring.version>
 		<tomcat.version>7.0.56</tomcat.version>
 		<h2.version>1.4.186</h2.version>
+		<jdbc.driver>org.h2.Driver</jdbc.driver>
+		<jdbc.url>jdbc:h2:${basedir}/db/crawled-data</jdbc.url>
 	</properties>
 
 	<dependencies>
@@ -180,8 +183,8 @@
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>2.5.1</version>
 				<configuration>
-					<source>1.7</source>
-					<target>1.7</target>
+					<source>${java.version}</source>
+					<target>${java.version}</target>
 				</configuration>
 			</plugin>
 			<plugin>
@@ -225,8 +228,8 @@
 					</dependency>
 				</dependencies>
 				<configuration>
-					<driver>org.h2.Driver</driver>
-					<url>jdbc:h2:${basedir}/db/crawled-data</url>
+					<driver>${jdbc.driver}</driver>
+					<url>${jdbc.url}</url>
 					<srcFiles>
 						<srcFile>src/main/resources/mybatis/database.sql</srcFile>
 					</srcFiles>
