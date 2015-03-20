@@ -35,7 +35,8 @@ It is a web application based on Spring MVC framework.
 1. Run `bin/webapp` or `bin/webapp.bat` to start the web
    application. Use the `PORT` environment variable to define on which
    port start the embedded Tomcat. By default it uses `8088`.
-   Alternatively use `foreman start`, which will use port `5000`.
+   You can also user the `foreman` gem or the `bin/shoreman` script.
+   In this case the default port is `5000`.
 
 1. Visit the project web homepage at `http://localhost:8088/` in order
    to start the daemon crawler thread.
