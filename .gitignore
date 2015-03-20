@@ -3,5 +3,5 @@
 /WebContent/WEB-INF/classes
 /logs
 /db/*.db
-/bin
+/bin/webapp*
 /repo
