@@ -43,7 +43,7 @@ public class ArticleController {
 		}
 
 		List<String> rst = this.articleSvc.convert(articleList);
-		StringBuilder sb = new StringBuilder("[\n");
+		StringBuilder sb = new StringBuilder("{\"articles\":[\n");
 		for (String s : rst) {
 			sb.append(s).append(",\n");
 		}
@@ -51,7 +51,7 @@ public class ArticleController {
 		if (sb.length() > 1)
 			sb.deleteCharAt(sb.length() - 2);
 
-		sb.append("]");
+		sb.append("]}");
 
 		return sb.toString();
 	}
