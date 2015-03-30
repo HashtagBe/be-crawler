@@ -74,36 +74,45 @@ end
 namespace :crawler do
   set :logfile, "#{deploy_to}/#{shared_path}/logs/nohup.log"
   set :pidfile, "#{deploy_to}/#{shared_path}/logs/run.pid"
+  set :current_dir, "#{deploy_to}/#{current_path}"
 
-  desc "Start the application in background"
+  desc "Fix the jdbc connection url"
+  task :jdbc do
+    queue %{echo "-----> Fixing jdbc url"}
+    config = "#{current_dir}/WebContent/WEB-INF/classes/mybatis/jdbc.properties"
+    database = "#{deploy_to}/#{shared_path}/db/crawled-data"
+    queue echo_cmd %[sed -i -r 's;url=(.*);url=jdbc:h2:#{database};g' #{config}]
+  end
+
+  desc "Start the application in background using `nohup`"
   task :start do
     queue %{echo "-----> Starting ..."}
-    queue! %[nohup sh bin/webapp > #{logfile} 2>&1 & echo $! > #{pidfile}]
+    in_directory current_dir do
+      queue echo_cmd %[nohup sh bin/webapp > #{logfile} 2>&1 & echo $! > #{pidfile}]
+    end
+    queue %{sleep 10} # just to ensure it started correctly
   end
 
   desc "Stop the application"
   task :stop do
     queue %{echo "-----> Stopping ..."}
-    queue! %[test -f #{pidfile} && kill `cat #{pidfile}` || true]
+    queue echo_cmd %[test -f #{pidfile} && kill `cat #{pidfile}` || true]
+    queue %{sleep 1} # just to ensure it stopped
   end
 
   desc "Restart the application"
-  task :restart => [:stop, :start] do
-    queue %{sleep 5}
-    invoke :'crawler:run'
-  end
+  task :restart => [:stop, :run]
 
   desc "Start crawling"
-  task :run do
+  task :run => :start do
     queue %{echo "-----> Start crawling"}
-    queue echo_cmd %[curl localhost:8088/article/startArticleCrawler.do]
+    queue echo_cmd %[curl -s localhost:8088/article/startArticleCrawler.do > /dev/null && echo "ok" || echo "error"]
   end
 
-  desc "Fix the jdbc connection url"
-  task :jdbc do
-    queue %{echo "-----> Fixing jdbc url"}
-    config = "#{deploy_to}/current/WebContent/WEB-INF/classes/mybatis/jdbc.properties"
-    database = "#{deploy_to}/#{shared_path}/db/crawled-data"
-    queue echo_cmd %[sed -i -r 's;url=(.*);url=jdbc:h2:#{database};g' #{config}]
+  desc "Check if the crawler is running"
+  task :status do
+    queue %{echo "-----> Checking crawler status"}
+    queue echo_cmd %[curl -s localhost:8088 > /dev/null && echo "running" || echo "not running"]
   end
+
 end
