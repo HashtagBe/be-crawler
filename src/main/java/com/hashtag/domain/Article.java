@@ -12,6 +12,7 @@ public class Article {
 
 	public Article() {
 		this.crawlDate = new Timestamp(System.currentTimeMillis());
+		this.date = new Timestamp(0);
 	}
 
 	public Timestamp getDate() {
