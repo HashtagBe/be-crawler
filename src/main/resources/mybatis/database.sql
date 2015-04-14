@@ -31,7 +31,7 @@ CREATE TABLE IF NOT EXISTS articles (
   title varchar(1024) DEFAULT NULL,
   subTitle varchar(1024) DEFAULT NULL,
   crawlDate timestamp AS CURRENT_TIMESTAMP(),
-  date timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `date` timestamp NULL DEFAULT '0000-00-00 00:00:00',
   imageUrls text,
   authors varchar(512) DEFAULT NULL,
   paragraphs text,
