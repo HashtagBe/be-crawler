@@ -24,6 +24,9 @@ set :forward_agent, true
 # They will be linked in the 'deploy:link_shared_paths' step.
 set :shared_paths, ['db', 'logs', 'repo']
 
+# Crawler-specific configuration.
+set :crawler_port, 8088
+
 # This task is the environment that is loaded for most commands, such as
 # `mina deploy` or `mina rake`.
 task :environment do
@@ -106,13 +109,13 @@ namespace :crawler do
   desc "Start crawling"
   task :run => :start do
     queue %{echo "-----> Start crawling"}
-    queue echo_cmd %[curl -s localhost:8088/article/startArticleCrawler.do > /dev/null && echo "ok" || echo "error"]
+    queue echo_cmd %[curl -s localhost:#{crawler_port}/article/startArticleCrawler.do > /dev/null && echo "ok" || echo "error"]
   end
 
   desc "Check if the crawler is running"
   task :status do
     queue %{echo "-----> Checking crawler status"}
-    queue echo_cmd %[curl -s localhost:8088 > /dev/null && echo "running" || echo "not running"]
+    queue echo_cmd %[curl -s localhost:#{crawler_port} > /dev/null && echo "running" || echo "not running"]
   end
 
 end
