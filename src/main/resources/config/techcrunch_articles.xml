@@ -26,7 +26,7 @@
         The type property defines actions for this item.
         And xpath property specifies the associated xpath for this item -->
         <!-- the item is used to crawl links in each seed page -->
-        <item itemId="articleUrls" type="link" xpath="//div[@class='block-content]/h2/a">
+        <item itemId="articleUrls" type="link" xpath="//div[@class='block-content']/h2/a">
             <!-- url string regular expression -->
             <url pageId="2" regex="^http://techcrunch\.com.*"/>
         </item>
