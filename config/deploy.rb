@@ -90,11 +90,9 @@ namespace :crawler do
   desc "Start the application in background using `nohup`"
   task :start do
     queue %{echo "-----> Starting ..."}
-    in_directory current_dir do
-      queue echo_cmd %[nohup sh bin/webapp > #{logfile} 2>&1 & echo $! > #{pidfile}]
-    end
+    queue %{cd #{current_dir} && nohup sh bin/webapp > #{logfile} 2>&1 & echo $! > #{pidfile}}
     queue %{sleep 10} # just to ensure it started correctly
-    queue %{echo "-----> idle"}
+    queue %{echo "-----> idle (pid: `cat #{pidfile}`"}
   end
 
   desc "Stop the application"
