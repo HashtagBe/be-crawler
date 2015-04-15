@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rule>
+    <!--
+    this is the specific site configuration XML. Note that the prefix of this
+    xml file name: "dailymail" must be the same with the name property value in
+    <site> node in all_sites.xml file
+    -->
+
+    <!-- seeds url defined here -->
+    <url value="http://www.wired.it" pageId="1" />
+    <url value="http://www.wired.it/attualita" pageId="1" />
+    <url value="http://www.wired.it/internet" pageId="1" />
+    <url value="http://www.wired.it/gadget" pageId="1" />
+    <url value="http://www.wired.it/mobile" pageId="1" />
+    <url value="http://www.wired.it/scienza" pageId="1" />
+    <url value="http://www.wired.it/economia" pageId="1" />
+    <url value="http://www.wired.it/play" pageId="1" />
+
+    <hopCountLimit>3</hopCountLimit>
+
+    <!-- page node defines actions for each URL page -->
+
+    <!-- article URL extraction rules -->
+    <page id="1">
+        <!-- item node represents a DOM node in a html page.
+        The itemId property is a unique ID to specify this item.
+        The type property defines actions for this item.
+        And xpath property specifies the associated xpath for this item -->
+        <!-- the item is used to crawl links in each seed page -->
+        <item itemId="articleUrls" type="link" xpath="//a">
+            <!-- url string regular expression -->
+            <url pageId="2" regex="^http://www\.wired\.it.*"/>
+        </item>
+    </page>
+
+    <!-- article properties extraction rules -->
+    <page id="2">
+        <item itemId="title" type="text" xpath="//header/h1">
+            <property>
+                <content scdName="title" />
+            </property>
+        </item>
+
+        <item itemId="author" type="text" xpath="//a[@rel='author']">
+            <property>
+                <content scdName="authors" />
+            </property>
+        </item>
+
+        <item itemId="date" type="attribute" xpath="//li[contains(@class,'meta-pubdate')]/time">
+            <property>
+                <attr scdName="date" attrName="datetime" />
+            </property>
+        </item>
+
+        <item itemId="imageUrls" type="imageUrl" xpath="//div[@id='main-article']//p//img">
+            <property>
+                <content scdName="imageUrls" />
+            </property>
+        </item>
+
+        <item itemId="paragraphs" type="text" xpath="//div[@id='main-article']//p">
+            <property>
+                <content scdName="paragraphs" />
+            </property>
+        </item>
+    </page>
+
+</rule>

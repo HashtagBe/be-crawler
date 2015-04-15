@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rule>
+	<url value="http://www.vice.com/it/fashion" pageId="1" />
+	<url value="http://www.vice.com/it/music" pageId="1" />
+	<url value="http://www.vice.com/it/travel" pageId="1" />
+	<url value="http://www.vice.com/it/sports" pageId="1" />
+	<url value="http://www.vice.com/it/tech" pageId="1" />
+	<url value="http://www.vice.com/it/food" pageId="1" />
+	<url value="http://www.vice.com/it/gaming" pageId="1" />
+
+	<hopCountLimit>3</hopCountLimit>
+
+	<!-- seed urls -->
+
+	<page id="1">
+		<item itemId="articleUrls" type="link" xpath="//h2[@class='item-title']//a">
+			<url pageId="2" regex="^http://*\.vice\.it.*" />
+		</item>
+	</page>
+
+	<!-- article properties extraction rules -->
+
+	<page id="2">
+		<item itemId="title" type="text" xpath="//div[@class='article-title-container']//h1//span">
+			<property>
+				<content scdName="title" />
+			</property>
+		</item>
+
+		<item itemId="author" type="text" xpath="//p[@class='contributor-full-name']">
+			<property>
+				<content scdName="authors" />
+			</property>
+		</item>
+
+		<item itemId="imageUrls" type="imageUrl" xpath="//p[@class='has-image']//img">
+			<property>
+				<content scdName="imageUrls" />
+			</property>
+		</item>
+
+		<item itemId="paragraphs" type="text" xpath="//div[@class='article-content rich-text']//p[not(@class='has-image')]">
+			<property>
+				<content scdName="paragraphs" />
+			</property>
+		</item>
+	</page>
+
+</rule>

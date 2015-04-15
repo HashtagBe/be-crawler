@@ -10,4 +10,12 @@
 	<site name="forbes" domainUrl="http://www.forbes.com/" />
 	<site name="bloomberg" domainUrl="http://www.bloomberg.com/" />
 	<site name="wired" domainUrl="http://www.wired.com/" />
+
+        <site name="abitare" domainUrl="http://www.abitare.it/" />
+        <site name="amica" domainUrl="http://www.amica.it/" />
+        <site name="corriere" domainUrl="http://www.corriere.it/" />
+        <site name="gazzetta" domainUrl="http://www.gazzetta.it/" />
+        <site name="wiredit" domainUrl="http://www.wired.it/" /> 
+        <site name="viceit" domainUrl="http://www.vice.com/" />
+        <site name="panorama" domainUrl="http://www.panorama.it/" />
 </sites>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rule>
+	<url value="http://www.abitare.it/it/architettura" pageId="1" />
+        <url value="http://www.abitare.it/it/design" pageId="1" />
+        <url value="http://www.abitare.it/it/habitat" pageId="1" />
+
+	<hopCountLimit>3</hopCountLimit>
+
+	<!-- seed urls -->
+
+	<page id="1">
+		<item itemId="articleUrls" type="link" xpath="//a">
+			<url pageId="2" regex="^http://www\.abitare\.it.*"/>
+		</item>		
+	</page>
+
+	<!-- article properties extraction rules -->
+
+	<page id="2">
+		<item itemId="title" type="text" xpath="//h1[@itemprop='post_title']">
+			<property>				
+				<content scdName="title" />
+			</property>
+		</item>
+
+		<item itemId="subtitle" type="text" xpath="//h2[@itemprop='desciption']">
+			<property>				
+				<content scdName="subTitle" />
+			</property>
+		</item>
+
+		<item itemId="author" type="text" xpath="//div[@class='post_author']/a">
+			<property>				
+				<content scdName="authors" />
+			</property>
+		</item>
+
+		<!--item itemId="date" type="attribute" xpath="">
+			<property>
+				<attr scdName="date" attrName="data-timestamp" />
+			</property>
+		</item-->
+
+		<item itemId="imageUrls" type="imageUrl" xpath="//div[@class='post_img main_img']//img">
+			<property>				
+				<content scdName="imageUrls" />
+			</property>
+		</item>
+
+		<item itemId="paragraphs" type="text" xpath="//div[@itemprop='articleBody']//p">
+			<property>				
+				<content scdName="paragraphs" />
+			</property>
+		</item>		
+	</page>
+
+</rule>
