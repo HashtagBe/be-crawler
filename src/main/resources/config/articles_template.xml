@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rule>
+	<url value="http://" pageId="1" />
+
+	<hopCountLimit>3</hopCountLimit>
+
+	<!-- seed urls -->
+
+	<page id="1">
+		<item itemId="articleUrls" type="link" xpath="">
+			<url pageId="2" regex="^http://www\.theguardian\.com.*"/>
+		</item>		
+	</page>
+
+	<!-- article properties extraction rules -->
+
+	<page id="2">
+		<item itemId="title" type="text" xpath="">
+			<property>				
+				<content scdName="title" />
+			</property>
+		</item>
+
+		<item itemId="subtitle" type="text" xpath="">
+			<property>				
+				<content scdName="subTitle" />
+			</property>
+		</item>
+
+		<item itemId="author" type="text" xpath="">
+			<property>				
+				<content scdName="authors" />
+			</property>
+		</item>
+
+		<item itemId="date" type="attribute" xpath="">
+			<property>
+				<attr scdName="date" attrName="data-timestamp" />
+			</property>
+		</item>
+
+		<item itemId="imageUrls" type="imageUrl" xpath="">
+			<property>				
+				<content scdName="imageUrls" />
+			</property>
+		</item>
+
+		<item itemId="paragraphs" type="text" xpath="">
+			<property>				
+				<content scdName="paragraphs" />
+			</property>
+		</item>		
+	</page>
+
+</rule>
