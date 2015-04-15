@@ -12,7 +12,18 @@
 
 	<url value="http://www.theguardian.com/uk/sport " pageId="1" />
 	<url value="http://www.theguardian.com/uk/culture" pageId="1" />
+	<url value="http://www.theguardian.com/uk/football" pageId="1" />
+	<url value="http://www.theguardian.com/uk/money" pageId="1" />
+	<url value="http://www.theguardian.com/uk/business" pageId="1" /> 
+	<url value="http://www.theguardian.com/uk/environment" pageId="1" />
+	<url value="http://www.theguardian.com/uk/technology" pageId="1" />
+
 	<url value="http://www.theguardian.com/world" pageId="1" />
+	<url value="http://www.theguardian.com/uk-news" pageId="1" />
+	<url value="http://www.theguardian.com/football" pageId="1" />
+	<url value="http://www.theguardian.com/lifeandstyle" pageId="1" />
+	<url value="http://www.theguardian.com/fashion" pageId="1" />
+	<url value="http://www.theguardian.com/travel" pageId="1" />
 
 	<hopCountLimit>3</hopCountLimit>
 
