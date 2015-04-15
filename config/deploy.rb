@@ -92,7 +92,7 @@ namespace :crawler do
     queue %{echo "-----> Starting ..."}
     queue %{cd #{current_dir} && nohup sh bin/webapp > #{logfile} 2>&1 & echo $! > #{pidfile}}
     queue %{sleep 10} # just to ensure it started correctly
-    queue %{echo "-----> idle (pid: `cat #{pidfile}`"}
+    queue %{echo "-----> idle (pid: `cat #{pidfile}`)}
   end
 
   desc "Stop the application"
