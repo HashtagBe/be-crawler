@@ -94,21 +94,23 @@ namespace :crawler do
       queue echo_cmd %[nohup sh bin/webapp > #{logfile} 2>&1 & echo $! > #{pidfile}]
     end
     queue %{sleep 10} # just to ensure it started correctly
+    queue %{echo "-----> idle"}
   end
 
   desc "Stop the application"
   task :stop do
     queue %{echo "-----> Stopping ..."}
-    queue echo_cmd %[test -f #{pidfile} && kill `cat #{pidfile}` || true]
+    queue echo_cmd %[test -f #{pidfile} && kill `cat #{pidfile}` || rm -f #{pidfile}]
     queue %{sleep 1} # just to ensure it stopped
+    queue %{echo "-----> stopped"}
   end
 
   desc "Restart the application"
-  task :restart => [:stop, :run]
+  task :restart => [:stop, :start, :run]
 
   desc "Start crawling"
-  task :run => :start do
-    queue %{echo "-----> Start crawling"}
+  task :run do
+    queue %{echo "-----> Starting crawling ..."}
     queue echo_cmd %[curl -s localhost:#{crawler_port}/article/startArticleCrawler.do > /dev/null && echo "ok" || echo "error"]
   end
 
