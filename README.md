@@ -38,17 +38,18 @@ It is a web application based on Spring MVC framework.
    You can also user the `foreman` gem or the `bin/shoreman` script.
    In this case the default port is `5000`.
 
-1. Visit the project web homepage at `http://localhost:8088/` in order
+1. Visit the project web homepage at `http://localhost:$PORT/` in order
    to start the daemon crawler thread.
 
 1. In order to:
    - get article list result:
-   `http://localhost:8088/article/getArticleList.do?startTime=${start time value}&endTime=${end time value}`
+   `http://localhost:$PORT/article/getArticleList.do?startTime=${start time value}&endTime=${end time value}`
    - get article list count:
-   `http://localhost:8088/article/getArticleCount.do?startTime=${start time value}&endTime=${end time value}`
+   `http://localhost:$PORT/article/getArticleCount.do?startTime=${start time value}&endTime=${end time value}`
    - export article list to Excel:
-   `http://localhost:8088/article/exportToExcel.do`
+   `http://localhost:$PORT/article/exportToExcel.do`
 
 ## How to add crawling tasks
 
-TODO
+Add a configuration file in `src/main/resources/config`.
+Have a look at the `articles_template.xml` and the other XML files.
